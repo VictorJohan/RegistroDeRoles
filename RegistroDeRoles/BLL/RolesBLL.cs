@@ -105,7 +105,7 @@ namespace RegistroDeRoles.BLL
             try
             {
                 rol = contexto.Roles.Where(x => x.RolId == RolId)
-                    .Include(d => d.Detalle).SingleOrDefault();//Busca el registro en la base de datos.
+                    .Include(d => d.Detalle).ThenInclude(d => d.Permisos).SingleOrDefault();//Busca el registro en la base de datos.
             }
             catch (Exception)
             {
@@ -154,7 +154,7 @@ namespace RegistroDeRoles.BLL
 
             try
             {
-                lista = contexto.Roles.Where(criterio).Include(X => X.Detalle).ToList();
+                lista = contexto.Roles.Where(criterio).Include(X => X.Detalle).ThenInclude(d => d.Permisos).ToList();
             }
             catch (Exception)
             {
