@@ -51,7 +51,7 @@ namespace RegistroDeRoles.BLL
             {
                 foreach (var item in rol.Detalle)
                 {
-                    contexto.Entry(item).State = EntityState.Modified;
+                    contexto.Entry(item.Permisos).State = EntityState.Modified;
                 }
                 contexto.Roles.Add(rol);
                 ok = contexto.SaveChanges() > 0;
@@ -104,8 +104,11 @@ namespace RegistroDeRoles.BLL
             Roles rol;
             try
             {
-                rol = contexto.Roles.Where(x => x.RolId == RolId)
-                    .Include(d => d.Detalle).ThenInclude(d => d.Permisos).SingleOrDefault();//Busca el registro en la base de datos.
+                rol = contexto.Roles
+                    .Where(x => x.RolId == RolId)
+                    .Include(d => d.Detalle)
+                    .ThenInclude(d => d.Permisos)
+                    .SingleOrDefault();//Busca el registro en la base de datos.
             }
             catch (Exception)
             {

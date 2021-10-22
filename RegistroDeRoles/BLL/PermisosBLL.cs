@@ -49,7 +49,7 @@ namespace RegistroDeRoles.BLL
 
             try
             {
-                contexto.Permisos.Add(Permiso);
+               contexto.Permisos.Add(Permiso);
                 ok = contexto.SaveChanges() > 0;
             }
             catch (Exception)

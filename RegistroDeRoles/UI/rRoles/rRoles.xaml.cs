@@ -49,11 +49,12 @@ namespace RegistroDeRoles.UI.rRoles
 
         private void ButtonAgregar_Click(object sender, RoutedEventArgs e)
         {
-            var detalle = new DetalleRoles()
+            var detalle = new DetalleRoles
             {
-                Permisos = permiso
+                PermisoId = int.Parse(PermisoIdComboBox.SelectedValue.ToString())
             };
 
+            detalle.Permisos = permiso;
             Rol.Detalle.Add(detalle);
             PermisosBLL.Incrementar(permiso.PermisoId);
             Cargar();
@@ -62,7 +63,7 @@ namespace RegistroDeRoles.UI.rRoles
 
         private void RemoverButton_Click(object sender, RoutedEventArgs e)
         {
-            if(DetalleDataGrid.SelectedIndex != -1)
+            if (DetalleDataGrid.SelectedIndex != -1)
             {
                 Rol.Detalle.RemoveAt(DetalleDataGrid.SelectedIndex);
                 DetalleRoles aux = (DetalleRoles)DetalleDataGrid.SelectedItem;
@@ -104,7 +105,7 @@ namespace RegistroDeRoles.UI.rRoles
 
         private void PermisoIdComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if(PermisoIdComboBox.SelectedIndex != -1)
+            if (PermisoIdComboBox.SelectedIndex != -1)
             {
                 permiso = (Permisos)PermisoIdComboBox.SelectedItem;
             }

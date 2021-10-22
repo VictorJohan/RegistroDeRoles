@@ -16,7 +16,7 @@ namespace RegistroDeRoles.Entidades
         public bool EsAsignado { get; set; }
         public int PermisoId { get; set; }
         [ForeignKey("PermisoId")]
-        public Permisos Permisos { get; set; }
+        public virtual Permisos Permisos { get; set; }
 
     }
 }
