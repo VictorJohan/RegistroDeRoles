@@ -12,7 +12,7 @@ namespace RegistroDeRoles.Entidades
     {
         [Key]
         public int RolId { get; set; }
-        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaCreacion { get; set; } = new DateTime();
         public string Descripcion { get; set; }
         public bool EsActivo { get; set; }
 
